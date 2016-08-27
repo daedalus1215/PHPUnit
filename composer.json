@@ -1,0 +1,15 @@
+{
+    "name": "zendframework/skeleton-application",
+    "description": "Playing with Design Patterns and PHPUnit, based off of DesignPatternsPHP Documentation Release 1.0",
+    "license": "BSD-3-Clause",
+    "keywords": [
+    ],    
+    "require": {
+        "php": ">=5.3.3",
+        "phpunit/phpunit": "5.5.*"
+    },
+    "autoload" : {
+        "psr-4" : {"PHPFun\\" : "src/"}
+        
+    }
+}
