@@ -1,5 +1,5 @@
 <?php
-namespace PHPFun;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,7 +12,7 @@ namespace PHPFun;
  * @author the_admin
  */
 class Money {
- private $amount;
+    private $amount;
 
     public function __construct($amount)
     {
