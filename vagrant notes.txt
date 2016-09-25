@@ -1,0 +1,6 @@
+go to the folder where our vagrant environment is setup and type:
+
+1. vagrant up: to turn it on
+2. vagrant halt: shut it down
+3. vagrant destroy: will remove vagrant machine there. (might have to do it with cmd).
+4. vagrant ssh: to connect to vagrant

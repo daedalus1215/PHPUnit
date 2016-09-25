@@ -1,0 +1,10 @@
+<?php $__env->startSection('browsertitle'); ?>
+    Page not found
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <h1>Page not found</h1>
+    Page not found!
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

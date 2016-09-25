@@ -1,15 +1,25 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Playing with Design Patterns and PHPUnit, based off of DesignPatternsPHP Documentation Release 1.0",
+    "name": "Testing PHPUnit and vagrant.",
+    "description": "Stuff from a PHPUnit course",
     "license": "BSD-3-Clause",
     "keywords": [
     ],    
     "require": {
-        "php": ">=5.3.3",
-        "phpunit/phpunit": "5.5.*"
+        "filp/whoops": "^1.1",
+        "vlucas/phpdotenv": "~1.1",
+        "illuminate/database": "5.1.*",
+        "altorouter/altorouter": "1.1.0",
+        "respect/validation": "^0.9.3",
+        "duncan3dc/blade": "2.2.*",
+        "robmorgan/phinx": "^0.4.5",
+        "symfony/var-dumper": "^2.7",
+        "cocur/slugify": "^1.2",
+        "swiftmailer/swiftmailer": "^5.4",
+        "kunststube/csrfp": "^0.1.0",
+        "sunra/php-simple-html-dom-parser": "v1.5.0"
     },
-    "autoload" : {
-        "psr-4" : {"Money\\" : "src/"}
-        
+    "autoload": {
+      "psr-4": { "Acme\\": "src/" }
     }
+
 }
