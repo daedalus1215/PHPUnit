@@ -5,4 +5,16 @@
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>
+    
+    <!-- Below filter will make sure that we test every file inside of the 
+        This section will allow us to be able to evaluate how much of a test 
+        coverage we have on this project.
+    -->
+    <filter>
+        <whitelist processUncoveredFilesFromWhiteList="true">
+            <directory suffix=".php">./src</directory> <!-- directory that we want to test, all .php files in that directory.-->
+        </whitelist>
+    </filter>
+    
+    
 </phpunit>
