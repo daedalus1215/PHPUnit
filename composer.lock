@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "829cfdf662735fdadb500935ae02e98b",
-    "content-hash": "f3fdae7f6ac155535086ed5b23ab1aeb",
+    "hash": "c7f41cda80dd76adb680130858b3f086",
+    "content-hash": "f97fdb3ac877288eb4f9f839bb261893",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -991,27 +991,27 @@
         },
         {
             "name": "respect/validation",
-            "version": "dev-master",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "639cfdb3c7414dabed56831f12bacf946ef9f4e7"
+                "reference": "e457f19dbd27370547ad0409f662d34ebb32e9a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/639cfdb3c7414dabed56831f12bacf946ef9f4e7",
-                "reference": "639cfdb3c7414dabed56831f12bacf946ef9f4e7",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/e457f19dbd27370547ad0409f662d34ebb32e9a9",
+                "reference": "e457f19dbd27370547ad0409f662d34ebb32e9a9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6",
+                "php": ">=5.4",
                 "symfony/polyfill-mbstring": "^1.2"
             },
             "require-dev": {
                 "egulias/email-validator": "~1.2",
                 "malkusch/bav": "~1.0",
                 "mikey179/vfsstream": "^1.5",
-                "phpunit/phpunit": "~5.3",
+                "phpunit/phpunit": "~4.0",
                 "symfony/validator": "~2.6.9",
                 "zendframework/zend-validator": "~2.3"
             },
@@ -1027,7 +1027,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -1052,7 +1052,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-09-20 06:46:56"
+            "time": "2016-09-20 06:44:39"
         },
         {
             "name": "robmorgan/phinx",
@@ -3019,9 +3019,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "respect/validation": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
