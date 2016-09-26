@@ -62,8 +62,17 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         
         $errors = $validator->check(['mintype' => 'email']);
         
-        $this->assertCount(0, $errors);
-        
+        $this->assertCount(0, $errors);            
+    }
     
+    public function testCheckForEmailWithInvalidData()
+    {
+        $request = new Request(['mintype' => 'whatever']); //simulate a field with the name of mintype as a get variable, with the value yellow.
+        $response = new Response($request);        
+        $validator = new Validator($request, $response);
+        
+        $errors = $validator->check(['mintype' => 'email']);
+        
+        $this->assertCount(1, $errors);
     }
 }
