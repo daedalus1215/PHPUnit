@@ -19,4 +19,16 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         
         $this->assertTrue($validator->getIsValid());        
     }
+    
+    public function testGetIsValidReturnsFalse()
+    {
+        $request = new Request([]);
+        $response = new Response($request);
+        
+        $validator = new Validator($request, $response);
+        
+        $validator->setIsValid(false);
+        
+        $this->assertFalse($validator->getIsValid());  
+    }
 }
