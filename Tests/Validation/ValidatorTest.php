@@ -44,22 +44,20 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     
     public function testCheckForMinStringLengthWithValidData()
     {
-        $request = new Request(['mintype' => 'yellow']); //simulate a field with the name of mintype as a get variable, with the value yellow.
-        $response = new Response($request);        
-        $validator = new Validator($request, $response);
+        $this->testdata = ['mintype' => 'yellow'];
+        $this->setUpRequestResponse();                       
         
-        $errors = $validator->check(['mintype' => 'min:3']);
+        $errors = $this->validator->check(['mintype' => 'min:3']);
         
         $this->assertCount(0, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
     }
     
     public function testCheckForMinStringLengthWithInvalidData()
-    {
-        $request = new Request(['mintype' => 'x']); //simulate a field with the name of mintype as a get variable, with the value yellow.
-        $response = new Response($request);        
-        $validator = new Validator($request, $response);
+    {        
+        $this->testdata = ['mintype' => 'x'];
+        $this->setUpRequestResponse();
         
-        $errors = $validator->check(['mintype' => 'min:3']);
+        $errors = $this->validator->check(['mintype' => 'min:3']);
         
         $this->assertCount(1, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
     }
@@ -67,22 +65,20 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     
     public function testCheckForEmailWithValidData()
     {
-        $request = new Request(['mintype' => 'ladams@yahoo.com']); //simulate a field with the name of mintype as a get variable, with the value yellow.
-        $response = new Response($request);        
-        $validator = new Validator($request, $response);
+        $this->testdata = ['mintype' => 'ladams@yahoo.com'];
+        $this->setUpRequestResponse();
         
-        $errors = $validator->check(['mintype' => 'email']);
+        $errors = $this->validator->check(['mintype' => 'email']);
         
         $this->assertCount(0, $errors);            
     }
     
     public function testCheckForEmailWithInvalidData()
-    {
-        $request = new Request(['mintype' => 'whatever']); //simulate a field with the name of mintype as a get variable, with the value yellow.
-        $response = new Response($request);        
-        $validator = new Validator($request, $response);
+    {        
+        $this->testdata = ['mintype' => 'whatever'];
+        $this->setUpRequestResponse();
         
-        $errors = $validator->check(['mintype' => 'email']);
+        $errors = $this->validator->check(['mintype' => 'email']);
         
         $this->assertCount(1, $errors);
     }
