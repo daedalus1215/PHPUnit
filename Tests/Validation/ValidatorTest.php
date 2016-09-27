@@ -8,6 +8,24 @@ use Acme\Validation\Validator;
 
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
+    
+    protected $request;
+    protected $response;
+    protected $validator;
+    protected $testdata;
+    
+    protected function setUpRequestResponse() 
+    {
+        if ($this->testdata == null) {
+            $this->testdata = [];
+        }
+        
+        $this->request = new Request($this->testdata);
+        $this->response = new Response($this->resquest);
+        
+        $this->validator = new Validator($this->request, $this->response);
+    }
+    
     public function testGetIsValidReturnsTrue()
     {
         $request = new Request([]);
