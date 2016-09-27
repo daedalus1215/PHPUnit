@@ -21,32 +21,25 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         }
         
         $this->request = new Request($this->testdata);
-        $this->response = new Response($this->resquest);
+        $this->response = new Response($this->request);
         
         $this->validator = new Validator($this->request, $this->response);
     }
     
     public function testGetIsValidReturnsTrue()
     {
-        $request = new Request([]);
-        $response = new Response($request);
+        $this->setUpRequestResponse();
+        $this->validator->setIsValid(true);                
         
-        $validator = new Validator($request, $response);
-        
-        $validator->setIsValid(true);
-        
-        $this->assertTrue($validator->getIsValid());        
+        $this->assertTrue($this->validator->getIsValid());        
     }
     
     public function testGetIsValidReturnsFalse()
     {
-        $request = new Request([]);
-        $response = new Response($request);        
-        $validator = new Validator($request, $response);
+        $this->setUpRequestResponse();
+        $this->validator->setIsValid(false);
         
-        $validator->setIsValid(false);
-        
-        $this->assertFalse($validator->getIsValid());  
+        $this->assertFalse($this->validator->getIsValid());  
     }
     
     public function testCheckForMinStringLengthWithValidData()
