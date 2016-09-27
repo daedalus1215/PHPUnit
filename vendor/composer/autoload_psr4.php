@@ -37,5 +37,6 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
+    'Auryn\\' => array($vendorDir . '/rdlowrey/auryn/lib'),
     'Acme\\' => array($baseDir . '/src'),
 );
