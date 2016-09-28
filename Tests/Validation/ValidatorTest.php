@@ -125,22 +125,43 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
 //    
 //    
-//    public function testValidateWithValidData()
-//    {
-//        $this->testdata = ['check_field' => 'john@legere.com'];
-//        $this->setUpRequestResponse();
-//        
-//        $this->assertTrue($this->validator->validate(['check_field' => 'email'], '/error'));
-//    }
+    public function testValidateWithValidData()
+    {
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('ladams@yahoo.com'));
+        
+        
+        $validator = new Validator($req, $this->response);
+        
+        $this->assertTrue($validator->validate(['check_field' => 'email'], '/error'));
+    }
 //    
 //    
-//    public function testValidateWithInvalidData()
-//    {
-//        $this->testdata = ['check_field' => 'x'];
-//        $this->setUpRequestResponse();
-//        
-//        $this->validator->validate(['check_field' => 'email'], '/register');
-//    }
+    public function testValidateWithInvalidData()
+    {
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('ladams@yahoo.com'));
+        
+        
+        $validator = new Validator($req, $this->response);
+        
+        
+        $validator->validate(['check_field' => 'email'], '/register');
+    }
 //    
 //    
 }
