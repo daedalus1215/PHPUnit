@@ -46,9 +46,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
 //    
     public function testCheckForMinStringLengthWithValidData()
-    {
-        $this->testdata = ['mintype' => 'yellow'];
-        $this->setUpRequestResponse();                       
+    {                   
        
         $req = $this->getMockBuilder('Acme\Http\Request')
                 ->getMock();
@@ -60,8 +58,8 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 ->method('input')
                 ->will($this->returnValue('yellow'));
         
-        
-        $errors = $this->validator->check(['mintype' => 'min:3']);
+        $validator = new Validator($req, $this->response);
+        $errors = $validator->check(['mintype' => 'min:3']);
         
         $this->assertCount(0, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
     }
