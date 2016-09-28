@@ -64,26 +64,37 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
     }
 //    
-//    public function testCheckForMinStringLengthWithInvalidData()
-//    {        
-//        $this->testdata = ['mintype' => 'x'];
-//        $this->setUpRequestResponse();
-//        
-//        $errors = $this->validator->check(['mintype' => 'min:3']);
-//        
-//        $this->assertCount(1, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
-//    }
+    public function testCheckForMinStringLengthWithInvalidData()
+    {        
+        
+        
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('x'));
+        
+        
+        $validator = new Validator($req, $this->response);
+        $errors = $validator->check(['mintype' => 'min:3']);
+        
+        $this->assertCount(1, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
+    }
 //    
 //    
-//    public function testCheckForEmailWithValidData()
-//    {
-//        $this->testdata = ['mintype' => 'ladams@yahoo.com'];
-//        $this->setUpRequestResponse();
-//        
-//        $errors = $this->validator->check(['mintype' => 'email']);
-//        
-//        $this->assertCount(0, $errors);            
-//    }
+    public function testCheckForEmailWithValidData()
+    {
+        $this->testdata = ['mintype' => 'ladams@yahoo.com'];
+        $this->setUpRequestResponse();
+        
+        $errors = $this->validator->check(['mintype' => 'email']);
+        
+        $this->assertCount(0, $errors);            
+    }
 //    
 //    public function testCheckForEmailWithInvalidData()
 //    {        
