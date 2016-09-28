@@ -65,9 +65,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
 //    
     public function testCheckForMinStringLengthWithInvalidData()
-    {        
-        
-        
+    {                        
         $req = $this->getMockBuilder('Acme\Http\Request')
                 ->getMock();
         
@@ -88,23 +86,43 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 //    
     public function testCheckForEmailWithValidData()
     {
-        $this->testdata = ['mintype' => 'ladams@yahoo.com'];
-        $this->setUpRequestResponse();
+        //ladams@yahoo.com
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
         
-        $errors = $this->validator->check(['mintype' => 'email']);
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('ladams@yahoo.com'));
+        
+        
+        $validator = new Validator($req, $this->response);
+        $errors = $validator->check(['mintype' => 'email']);
         
         $this->assertCount(0, $errors);            
     }
 //    
-//    public function testCheckForEmailWithInvalidData()
-//    {        
-//        $this->testdata = ['mintype' => 'whatever'];
-//        $this->setUpRequestResponse();
-//        
-//        $errors = $this->validator->check(['mintype' => 'email']);
-//        
-//        $this->assertCount(1, $errors);
-//    }
+    public function testCheckForEmailWithInvalidData()
+    {        
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('whatever'));
+        
+        
+        $validator = new Validator($req, $this->response);
+        
+        $errors = $validator->check(['mintype' => 'email']);
+        
+        $this->assertCount(1, $errors);
+    }
 //    
 //    
 //    public function testValidateWithValidData()
