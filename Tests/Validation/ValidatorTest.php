@@ -45,15 +45,26 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validator->getIsValid());  
     }
 //    
-//    public function testCheckForMinStringLengthWithValidData()
-//    {
-//        $this->testdata = ['mintype' => 'yellow'];
-//        $this->setUpRequestResponse();                       
-//        
-//        $errors = $this->validator->check(['mintype' => 'min:3']);
-//        
-//        $this->assertCount(0, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
-//    }
+    public function testCheckForMinStringLengthWithValidData()
+    {
+        $this->testdata = ['mintype' => 'yellow'];
+        $this->setUpRequestResponse();                       
+       
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        // essentially, The Acme\Http\Request object has a method, called 'input'.
+        // and input takes a value (yellow) and grabs it from the global session.
+        // we are simulating that.
+        $req->expects($this->once())
+                ->method('input')
+                ->will($this->returnValue('yellow'));
+        
+        
+        $errors = $this->validator->check(['mintype' => 'min:3']);
+        
+        $this->assertCount(0, $errors); //lets make sure there are no errors with the rule and the field's value being tested.
+    }
 //    
 //    public function testCheckForMinStringLengthWithInvalidData()
 //    {        
