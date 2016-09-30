@@ -207,4 +207,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $errors = $validator->check(['my_field' => 'unique:User']);
         $this->assertCount(1, $errors);
     }
+    
+    
+    // smoke test.
+    
+    
+    
+    
 }
