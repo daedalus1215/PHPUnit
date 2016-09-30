@@ -26,7 +26,7 @@ class Response {
      * Constructor
      */
     public function __construct(Request $request, SignatureGenerator $signer,
-     duncan3dc\Laravel\BladeInstance $blade, Session $session)
+     \duncan3dc\Laravel\BladeInstance $blade, Session $session)
     {
         $this->request = $request;
         $this->blade = $blade;
