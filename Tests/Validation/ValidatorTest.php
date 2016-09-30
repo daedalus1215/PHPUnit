@@ -124,13 +124,44 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
 
     public function testValidateWithInvalidData()
-    {        
-        $this->setUp();
-        $this->getReq('ladams@yahoo.com');
+    {                
+        $req = $this->getReq('ladams@yahoo.com');
         $validator = new Validator($req, $this->response);
         
         $validator->validate(['check_field' => 'email'], '/register');
     }
 
+    
+    public function testCheckForEqualToWithValidData()
+    {
+        // all methods are stubs, all methods return null, all methods return can be overriden
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
+        
+        $req->expects($this->at(0))
+                ->method('input')
+                ->will($this->returnValue('jack'));
+        
+        $req->expects($this->at(1))
+                ->method('input')
+                ->will($this->returnValue('jack'));
+        
+        
+        $validator = new Validator($req, $this->response, $this->session);
+        $errors = $validator->check(['my_field' => 'equalTo:another_field']);
+        $this->assertCount(0, $errors);
+        
+        // all methods are mocks (that means it actually runs the code behind the methods themselves), all methods return null, all methods return can be overriden.
+//        $req = $this->getMockBuilder('Acme\Http\Request')
+//                ->getMock(null);
+//        
+//        // list individual methods to be mocks.
+//        $req = $this->getMockBuilder('Acme\Http\Request')
+//                ->getMock(['methodOne', 'methodTwo']);
+    }
 
+    public function testCheckForEqualToWithInvalidData()
+    {
+        
+    }
 }
