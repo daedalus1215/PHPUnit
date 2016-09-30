@@ -25,14 +25,15 @@ class Response {
     /**
      * Constructor
      */
-    public function __construct(Request $request, SignatureGenerator $signer)
+    public function __construct(Request $request, SignatureGenerator $signer,
+     duncan3dc\Laravel\BladeInstance $blade, Session $session)
     {
         $this->request = $request;
-        $this->blade = new BladeInstance(getenv('VIEWS_DIRECTORY'), getenv('CACHE_DIRECTORY'));
+        $this->blade = $blade;
         $this->response_type = 'text/html';
         $this->signer = $signer;
         $this->with['signer'] = $this->signer;
-        $this->session = new Session();
+        $this->session = $session;
         $this->with_input = false;
     }
 
