@@ -179,4 +179,32 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $errors = $validator->check(['my_field' => 'equalTo:another_field']);
         $this->assertCount(1, $errors);
     }
+    
+    public function testCheckForUniqueWithValidData()
+    {
+        $validator = $this->getMockBuilder('Acme\Validation\Validator')
+                ->setConstructorArgs([$this->request, $this->response, $this->session])
+                ->setMethods(['getRows'])
+                ->getMock();
+        
+        $validator->method('getRows')
+                ->willReturn([]);
+        
+        $errors = $validator->check(['my_field' => 'unique:User']);
+        $this->assertCount(0, $errors);
+    }
+    
+    public function testCheckForUniqueWithInvalidData()
+    {
+        $validator = $this->getMockBuilder('Acme\Validation\Validator')
+                ->setConstructorArgs([$this->request, $this->response, $this->session])
+                ->setMethods(['getRows'])
+                ->getMock();
+        
+        $validator->method('getRows')
+                ->willReturn(['a']);
+        
+        $errors = $validator->check(['my_field' => 'unique:User']);
+        $this->assertCount(1, $errors);
+    }
 }
