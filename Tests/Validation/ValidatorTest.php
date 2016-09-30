@@ -162,6 +162,21 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckForEqualToWithInvalidData()
     {
+        // all methods are stubs, all methods return null, all methods return can be overriden
+        $req = $this->getMockBuilder('Acme\Http\Request')
+                ->getMock();
         
+        $req->expects($this->at(0))
+                ->method('input')
+                ->will($this->returnValue('jack'));
+        
+        $req->expects($this->at(1))
+                ->method('input')
+                ->will($this->returnValue('jill'));
+        
+        
+        $validator = new Validator($req, $this->response, $this->session);
+        $errors = $validator->check(['my_field' => 'equalTo:another_field']);
+        $this->assertCount(1, $errors);
     }
 }
